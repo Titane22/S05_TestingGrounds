@@ -3,7 +3,7 @@
 #include "ChooseNextWaypoint.h"
 #include "AIController.h"
 #include "PatrolRoute.h"
-#include "../Public/ChooseNextWaypoint.h"
+#include "ChooseNextWaypoint.h"
 #include "BehaviorTree/BlackboardComponent.h"
 
 EBTNodeResult::Type UChooseNextWaypoint::ExecuteTask(UBehaviorTreeComponent & OwnerComp, uint8 * NodeMemory)
