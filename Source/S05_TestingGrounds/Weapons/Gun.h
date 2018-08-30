@@ -38,8 +38,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	class UAnimMontage* FireAnimation3P;
 
+	// Anim Instance about FPS
 	class UAnimInstance* AnimInstance1P;
 
+	// Anim Instance about TPS
 	class UAnimInstance* AnimInstance3P;
 protected:
 	// Called when the game starts or when spawned

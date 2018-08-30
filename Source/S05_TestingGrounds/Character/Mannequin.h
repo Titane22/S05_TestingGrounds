@@ -28,9 +28,11 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<class AGun> GunBlueprint;
 
+	// Euqipped gun fire
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 		void PullTrigger();
 
+	// when character is dead, call it
 	virtual void UnPossessed() override;
 
 private:
@@ -42,6 +44,7 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		class UCameraComponent* FirstPersonCameraComponent;
 
+	// Equipped Weapon
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		AGun* Gun;
 

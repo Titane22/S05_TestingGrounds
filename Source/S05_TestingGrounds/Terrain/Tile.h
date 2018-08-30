@@ -23,12 +23,17 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION(BlueprintCallable,Category=Spawn)
-	void PlaceActors(TSubclassOf<AActor> ToSpawn,int MinSpawn,int MaxSpawn,int Radius);
-	
-	void PlaceActor(TSubclassOf<AActor> ToSpawn, FVector SpawnPoint);
+	// MinSpawn to MaxSpawn Spawns ToSpawn actors,set actors in blueprint 
+	UFUNCTION(BlueprintCallable, Category = Spawn)
+	void PlaceActors(TSubclassOf<AActor> ToSpawn, int MinSpawn, int MaxSpawn, int Radius, float MinScale = 1.f, float MaxScale = 1.f);
 
+private:
+	// set randomise rotation and scale,and find the spawn point
+	void PlaceActor(TSubclassOf<AActor> ToSpawn, FVector SpawnPoint, int Rotation, float Scale);
+
+	// Find where to create MAX_ATTEMPS times.
 	bool FindEmptyLocation(OUT FVector& OutLocation, float Radius);
 
+	// if it is true, can spawn actors
 	bool CanSpawnAtLocation(FVector Location, float Radius);
 };
