@@ -20,13 +20,15 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable,Category="Pool")
 	void SetPool(UActorPool* InPool);
+
+	void PositionNavMeshBoundsVolume();
 
 	// MinSpawn to MaxSpawn Spawns ToSpawn actors,set actors in blueprint 
 	UFUNCTION(BlueprintCallable, Category = Spawn)
@@ -43,4 +45,6 @@ private:
 	bool CanSpawnAtLocation(FVector Location, float Radius);
 
 	UActorPool* Pool;
+
+	AActor* NavMeshBoundsVolume;
 };
