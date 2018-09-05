@@ -34,8 +34,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Spawn)
 	void PlaceActors(TSubclassOf<AActor> ToSpawn, int MinSpawn, int MaxSpawn, int Radius, float MinScale = 1.f, float MaxScale = 1.f);
 
+	UPROPERTY(EditDefaultsOnly, Category = "Navgation")
+	FVector NavMeshBoundsVolumeOffset;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Spawning")
 	FVector MinExtent;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Spawning")
 	FVector MaxExtent;
 
