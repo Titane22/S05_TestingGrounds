@@ -39,14 +39,13 @@ public:
 	void SetPool(UActorPool* InPool);
 
 	// MinSpawn to MaxSpawn Spawns ToSpawn actors,set actors in blueprint 
-	UFUNCTION(BlueprintCallable, Category = Spawn)
+	UFUNCTION(BlueprintCallable, Category = Spawning)
 	void PlaceActors(TSubclassOf<AActor> ToSpawn, int MinSpawn, int MaxSpawn, int Radius, float MinScale = 1.f, float MaxScale = 1.f);
 
 	// MinSpawn to MaxSpawn Spawns ToSpawn actors,set actors in blueprint 
-	UFUNCTION(BlueprintCallable, Category = Spawn)
-		void PlaceAIPawns(TSubclassOf<APawn> ToSpawn, int MinSpawn, int MaxSpawn, int Radius);
+	UFUNCTION(BlueprintCallable, Category = Spawning)
+	void PlaceAIPawns(TSubclassOf<APawn> ToSpawn, int MinSpawn, int MaxSpawn, int Radius);
 
-	
 
 	UPROPERTY(EditDefaultsOnly, Category = "Navgation")
 	FVector NavMeshBoundsVolumeOffset;
@@ -62,11 +61,14 @@ public:
 private:
 	void PositionNavMeshBoundsVolume();
 
+	template<class T>
+	void RandomlyPlaceActors(TSubclassOf<T> ToSpawn, int MinSpawn = 1, int MaxSpawn = 1, float Radius = 500, float MinScale = 1, float MaxScale = 1);
+
 	// set randomise rotation, scale and find the spawn point
 	void PlaceActor(TSubclassOf<AActor> ToSpawn,FSpawnPosition SpawnPosition);
 
 	// set randomise rotation and find the spawn point
-	void PlaceAIPawn(TSubclassOf<APawn> ToSpawn, FSpawnPosition SpawnPosition);
+	void PlaceActor(TSubclassOf<APawn> ToSpawn, FSpawnPosition SpawnPosition);
 
 	// Get randomly spawn position between MinSpawn to MaxSpawn;
 	TArray<FSpawnPosition> RandomSpawnPositions(int MinSpawn, int MaxSpawn, int Radius, float MinScale = 1.f, float MaxScale = 1.f);
